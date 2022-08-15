@@ -3,7 +3,7 @@
 Replica is a simple but efficient undetectable ransomware written in Python for Windows.</br>
 The main difference between Replica and other Ransomwares is the fact that Replica stores each of it's key in a database.
 
-Warning! Replica is a project only for demonstration purposes, don't use it in any malicious way.
+``Warning! Replica is a project only for demonstration purposes, don't use it in any malicious way.``
 
 # **Libraries used**
 ```
