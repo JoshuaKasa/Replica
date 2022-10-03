@@ -1,5 +1,3 @@
-import subprocess
-
 import mysql.connector
 from socket import gethostname
 from os import walk
